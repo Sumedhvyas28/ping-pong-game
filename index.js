@@ -61,4 +61,15 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
         paddle.style.top=`${paddleY}px`
     })
+
+    document.addEventListener("mousemove",(event)=>{
+        if(event.clientX>table.offsetLeft+table.offsetWidth/2) return;
+        let mouseDistanceFromTop=event.clientY // distance of mouse point from top to bottom of the tabke 
+        let distanceOfTableTop=table.offsetTop;
+        let mousePointControl=mouseDistanceFromTop-distanceOfTableTop-paddle.offsetHeight/2;
+        paddleY = mousePointControl;
+        if(paddleY<=0 || paddleY>table.offsetHeight-paddle.offsetHeight) return;
+        paddle.style.top=`${paddleY}px`
+
+    })
 })  
