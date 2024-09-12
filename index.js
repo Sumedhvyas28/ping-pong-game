@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded',()=>{
     let table = document.getElementById('ping-pong-table')
-    let ball = document.getElementById('ball')
+    let ball = document.getElementById('ball') // target the ball element
+    let paddle = document.getElementById('paddle'); //  target the paddle element
 
 // starting point of ball wrt table
     let ballX= 50
@@ -32,4 +33,23 @@ document.addEventListener('DOMContentLoaded',()=>{
         if(ballY > table.offsetHeight-ball.offsetHeight || ballY <=0) dy*=-1;
 
     },1)
+
+    let paddleY=0;
+    let dPy=5;
+
+
+    document.addEventListener('keydown',(event)=>{
+        if(event.keyCode==38 && paddleY >0){
+            // up  arrow    
+            paddleY+=(-1)*dPy;   
+               
+                
+
+        }else if(event.keyCode==40 && paddleY < table.offsetHeight-paddle.offsetHeight-10){
+            //down arrow
+            paddleY+=dPy;
+            
+        }
+        paddle.style.top=`${paddleY}px`
+    })
 })  
